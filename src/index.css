@@ -1,0 +1,7 @@
+.btn{
+    display: flex;
+    width: 50px;
+}
+.textbox{
+    border: 2px solid red;
+}

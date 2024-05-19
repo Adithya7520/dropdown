@@ -6,9 +6,19 @@ function App() {
   const[data,setData]=useState([])
 
   function addItem(){
-      
-    setData([...data,inputdata])
-    setInputData("")
+    if(inputdata != ""){
+      setData([...data,inputdata])
+      setInputData("")
+    }
+    
+  }
+  function deleteItem(e){
+    console.log(e)
+    setData(data.filter((ele)=>{return ele != e}))
+
+  }
+  function EditItem(e){
+    setInputData(e)
   }
 
   return (
@@ -40,12 +50,14 @@ function App() {
          {data.map((ele)=>{
                  return(
                   <div className="container">
-                    <div className="row bg-danger">
-                    <input type="text" className="form-control" value={ele}/>
+                    <div className="row ">
+                    <li>{ele} <span className="btn btn-danger" onClick={()=>deleteItem(ele)}>delete</span>
+                    <span className="btn btn-primary" onClick={()=>EditItem(ele)}>edit</span>
+                    </li> 
+
                     </div>
                     <div className="">
 
-                   <span className="btn btn-danger">-</span>
                     </div>
                    </div>
                  )
